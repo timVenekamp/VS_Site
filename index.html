@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Tim Venekamp</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="homepage is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Tim Venekamp</a></h1>
+								<hr />
+							
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="#">Venekamp Entertainment</a>
+									<ul>
+										<li><a href="#">Little Hats</a></li>
+										<li><a href="#">Bubble Boy</a></li>
+										<li><a href="#">Secret Project</a></li>
+										<!--<li>
+											<a href="#">And a submenu &hellip;</a>
+											<ul>
+												<li><a href="#">Lorem ipsum dolor</a></li>
+												<li><a href="#">Phasellus consequat</a></li>
+												<li><a href="#">Magna phasellus</a></li>
+												<li><a href="#">Etiam dolore nisl</a></li>
+											</ul>
+										</li>-->
+										<li><a href="#">DeepLands</a></li>
+									</ul>
+								</li>
+								<li><a href="left-sidebar.html">About</a></li>
+								<li><a href="right-sidebar.html">Services</a></li>
+								<li><a href="no-sidebar.html">Contact</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Banner -->
+				<section id="banner">
+					<header>
+						<h2><strong>Venekamp Entertainment</strong></h2>
+						<p>
+							Venekamp Entertainment is a game development studio based in Groningen, the Netherlands. 
+						</p>
+					</header>
+				</section>
+
+			<!-- Carousel -->
+			<div class="wrapper style2">
+				<section class="carousel"> 
+					<!--<div class="reel"> -->
+
+						  <article>
+							<div class="hover-effect">
+							  <a href="#" class="image featured">
+								<img src="images/LH_Capsule.png" alt="Little Hats" />
+							  </a>
+							  <div class="reflection"></div>
+							</div>
+							<header>
+								<header></header>
+							  <h3><a href="#">Little Hats</a></h3>
+							</header>
+							<p>An open-world survival game in which you play as a gnome!</p>
+						  </article>
+
+						  <article>
+							<div class="hover-effect">
+							  <a href="#" class="image featured">
+								<img src="images/BB_Capsule.png" alt="Bubble Boy" />
+							  </a>
+							  <div class="reflection"></div>
+							</div>
+							<header>
+								<header></header>
+							  <h3><a href="#">The Tale of: Bubble Boy</a></h3>
+							</header>
+							<p>Help Bubble Boy reach the highest mountaintop in the Alps, in this ultra difficult platformer.</p>
+						  </article>
+
+						<article>
+							<div class="hover-effect">
+							  <a href="#" class="image featured">
+								<img src="images/SecretProject_Capsule.png" alt="Secret Project" />
+							  </a>
+							  <div class="reflection"></div>
+							</div>
+							<header>
+								<header></header>
+							  <h3><a href="#">Secret Project</a></h3>
+							</header>
+							<p>More information coming soon!</p>
+						  </article>
+
+						  <article>
+							<div class="hover-effect">
+							  <a href="#" class="image featured">
+								<img src="images/DL_Capsule.png" alt="DeepLands" />
+							  </a>
+							  <div class="reflection"></div>
+							</div>
+							<header>
+								<header></header>
+							  <h3><a href="#">DeepLands</a></h3>
+							</header>
+							<p>Explore a magical underground world filled with dwarfs, hidden cities, troll people and more!.</p>
+						  </article>
+						  
+					</div>
+				</section>
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<article id="main" class="container special">
+						<header>
+							<html lang="en">
+							<h2><a href="#">Watch The Latest Video
+							</a></h2>
+						</header>
+						<head>
+							<meta charset="UTF-8">
+							<meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<title>Latest YouTube Video</title>
+							<style>
+							  body {
+								font-family: Arial, sans-serif;
+								text-align: center;
+								padding: 20px;
+							  }
+							  iframe {
+								width: 100%;
+								max-width: 960px;
+								height: 515px;
+								border: none;
+							  }
+							</style>
+						  </head>
+						  <body>
+							<div id="video-container">
+							  <p>Loading the latest video...</p>
+							</div>
+						  
+							<script>
+							  const API_KEY = 'AIzaSyBqNFxB-phNXY4yDaK3iz0PQBxGIt4kq3Y'; // Replace with your API key
+							  const CHANNEL_ID = 'UCsj3Z15hAjBNvd1xQi42iyA';   // Replace with your channel ID
+						  
+							  async function fetchLatestVideo() {
+								try {
+								  const response = await fetch(
+									`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=1`
+								  );
+								  const data = await response.json();
+								  if (data.items && data.items.length > 0) {
+									const videoId = data.items[0].id.videoId;
+									if (videoId) {
+										const iframe = `
+              <iframe 
+                src="https://www.youtube.com/embed/${videoId}" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            `;
+									  document.getElementById('video-container').innerHTML = iframe;
+									} else {
+									  document.getElementById('video-container').innerHTML = '<p>No videos found.</p>';
+									}
+								  } else {
+									document.getElementById('video-container').innerHTML = '<p>No videos found.</p>';
+								  }
+								} catch (error) {
+								  console.error('Error fetching the latest video:', error);
+								  document.getElementById('video-container').innerHTML = '<p>Error loading video. Please try again later.</p>';
+								}
+							  }
+						  
+							  // Fetch the latest video on page load
+							  fetchLatestVideo();
+							</script>
+				</div>
+
+				<article id="main" class="container special">
+					<header>
+						<h2><a href="#">About Me</a></h2>
+					</header>
+					<section>
+						<div class="row">
+							<div class="left">
+								<img src="images/BB_Capsule.png" alt="Your photo here" style="max-width: 100%; height: auto;">
+							</div>
+							<div class="right">
+								<p>Here you can write about yourself. Include details like your background, interests, skills, and anything else you want people to know about you. For example:</p>
+								<p>
+									"I am passionate about technology and enjoy working on projects that challenge my creativity and problem-solving skills. In my free time, I love to travel, read science fiction, and experiment with new coding languages."
+								</p>
+							</div>
+						</div>
+					</section>
+				</article>
+				
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+						</div>
+						<hr />
+						<div class="row">
+							<div class="col-12"> 
+
+								<!-- Contact -->
+									<section class="contact">
+										
+										<ul class="icons">
+											<li><a href="https://x.com/timvenekamp" class="icon brands fa-twitter"><span class="label">X</span></a></li>
+											<li><a href="https://www.instagram.com/tim_venekamp/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="https://store.steampowered.com/publisher/Venekamp/" class="icon brands fa-steam"><span class="label">Steam</span></a></li>
+											<li><a href="https://www.youtube.com/@TimVenekamp" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+											<li><a href="https://discord.com/invite/SuadgxS" class="icon brands fa-discord"><span class="label">Discord</span></a></li>
+
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; 2025 Tim Venekamp. All rights reserved.</li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
